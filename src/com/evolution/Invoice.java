@@ -1,22 +1,37 @@
-package com.mechanical;
+package com.evolution;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import com.banca.gestioComptes.ApuntBancari;
 
 public class Invoice {
 	private int id;
 	private List<Breakdown>breackdownList;
 	private boolean paid;
 	private LocalDate date;
+	private List<Breakdown> breakdownList;
 	
-	public Invoice(int id, List<Breakdown> breackdownList, boolean paid, LocalDate date) {
+	public Invoice(int id, List<Breakdown> breakdownList, boolean paid, LocalDate date) {
 		super();
 		this.id = id;
-		this.breackdownList = breackdownList;
+		this.breakdownList = breakdownList;
 		this.paid = paid;
 		this.date = date;
 	}
-
+	
+	public double CalculateTotal(Client client) {
+		double total = 0.0;
+		if(this.breackdownList != null) {
+			for (Breakdown br : this.breakdownList) {
+				total += br.getPrice();
+			}
+		}
+		if(client.isPremium()) {
+			total = total * 0.5;
+		}
+		return total;
+	}
 	public Invoice() {
 	}
 

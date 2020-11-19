@@ -1,4 +1,4 @@
-package com.mechanical;
+package com.evolution;
 
 public class Person {
 	private String dni;

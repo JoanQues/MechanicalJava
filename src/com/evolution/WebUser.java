@@ -1,4 +1,4 @@
-package com.mechanical;
+package com.evolution;
 
 public class WebUser extends Client {
 	private String username;
