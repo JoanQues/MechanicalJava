@@ -1,6 +1,7 @@
 package com.evolution;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Invoice {
@@ -15,6 +16,7 @@ public class Invoice {
 		this.id = id;
 		this.paid = paid;
 		this.date = date;
+		this.breackdownList = new ArrayList<Breakdown>();
 	}
 	
 	public double CalculateTotal() {
@@ -41,6 +43,10 @@ public class Invoice {
 		return total;
 	}
 	
+	public void AddBreakdown(Breakdown breakdown) {
+		this.breackdownList.add(breakdown);
+	}
+	
 	public Invoice() {
 	}
 
@@ -59,14 +65,6 @@ public class Invoice {
 
 	public void setBreakdownList(List<Breakdown> breakdownList) {
 		this.breakdownList = breakdownList;
-	}
-
-	public List<Breakdown> getBreackdownList() {
-		return breackdownList;
-	}
-
-	public void setBreackdownList(List<Breakdown> breackdownList) {
-		this.breackdownList = breackdownList;
 	}
 
 	public boolean isPaid() {
@@ -111,7 +109,7 @@ public class Invoice {
 	public String toString() {
 		return "Invoice [id=" + id + ", breackdownList=" + breackdownList + ", paid=" + paid + ", date=" + date
 				+ ", breakdownList=" + breakdownList + ", getId()=" + getId() + ", getBreakdownList()="
-				+ getBreakdownList() + ", getBreackdownList()=" + getBreackdownList() + ", isPaid()=" + isPaid()
+				+ getBreakdownList() + ", getBreackdownList()=" + getBreakdownList() + ", isPaid()=" + isPaid()
 				+ ", getDate()=" + getDate() + "]";
 	}
 
