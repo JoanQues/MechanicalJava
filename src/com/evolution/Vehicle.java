@@ -6,9 +6,9 @@ public class Vehicle {
 	private String matricula;
 	private String brand;
 	private LocalDate registratonDate;
-	private String propietary;
+	private Client propietary;
 	
-	public Vehicle(String matricula, String brand, LocalDate registratonDate, String propietary) {
+	public Vehicle(String matricula, String brand, LocalDate registratonDate, Client propietary) {
 		super();
 		this.matricula = matricula;
 		this.brand = brand;
@@ -43,11 +43,11 @@ public class Vehicle {
 		this.registratonDate = registratonDate;
 	}
 
-	public String getPropietary() {
+	public Client getPropietary() {
 		return propietary;
 	}
 
-	public void setPropietary(String propietary) {
+	public void setPropietary(Client propietary) {
 		this.propietary = propietary;
 	}
 

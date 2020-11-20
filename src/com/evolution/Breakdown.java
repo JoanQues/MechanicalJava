@@ -7,9 +7,10 @@ public class Breakdown {
 	private double price;
 	private Enum<SeverityType>severity;
 	private Worker mechanic;
+	private Vehicle vehicle;
 	
 	public Breakdown(int id, String name, String description, double price, Enum<SeverityType> severity,
-			Worker mechanic) {
+			Worker mechanic, Vehicle vehicle) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -17,9 +18,20 @@ public class Breakdown {
 		this.price = price;
 		this.severity = severity;
 		this.mechanic = mechanic;
+		this.vehicle = vehicle;
 	}
 
 	public Breakdown() {
+	}
+	
+	
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
 
 	public int getId() {
@@ -95,8 +107,12 @@ public class Breakdown {
 	@Override
 	public String toString() {
 		return "Breakdown [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", severity=" + severity + ", mechanic=" + mechanic + "]";
+				+ ", severity=" + severity + ", mechanic=" + mechanic + ", vehicle=" + vehicle + ", getId()=" + getId()
+				+ ", getName()=" + getName() + ", getDescription()=" + getDescription() + ", getPrice()=" + getPrice()
+				+ ", getSeverity()=" + getSeverity() + ", getMechanic()=" + getMechanic() + "]";
 	}
+
+
 	
 	
 	

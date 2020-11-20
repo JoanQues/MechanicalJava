@@ -3,8 +3,6 @@ package com.evolution;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.banca.gestioComptes.ApuntBancari;
-
 public class Invoice {
 	private int id;
 	private List<Breakdown>breackdownList;
@@ -12,26 +10,37 @@ public class Invoice {
 	private LocalDate date;
 	private List<Breakdown> breakdownList;
 	
-	public Invoice(int id, List<Breakdown> breakdownList, boolean paid, LocalDate date) {
+	public Invoice(int id, boolean paid, LocalDate date) {
 		super();
 		this.id = id;
-		this.breakdownList = breakdownList;
 		this.paid = paid;
 		this.date = date;
 	}
 	
-	public double CalculateTotal(Client client) {
+	public double CalculateTotal() {
 		double total = 0.0;
+		boolean premium = false;
 		if(this.breackdownList != null) {
 			for (Breakdown br : this.breakdownList) {
 				total += br.getPrice();
+				if(br.getVehicle().getPropietary().isPremium()) {
+					premium = true;
+				}
 			}
 		}
-		if(client.isPremium()) {
-			total = total * 0.5;
+		if(premium) {
+			double iva = total * 0.05;
+			total = total - iva;
 		}
 		return total;
 	}
+	
+	public static double CalculateIVA(double price) {
+		double total = 0.0;
+		total = price * 0.21;
+		return total;
+	}
+	
 	public Invoice() {
 	}
 
@@ -41,6 +50,15 @@ public class Invoice {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+
+	public List<Breakdown> getBreakdownList() {
+		return breakdownList;
+	}
+
+	public void setBreakdownList(List<Breakdown> breakdownList) {
+		this.breakdownList = breakdownList;
 	}
 
 	public List<Breakdown> getBreackdownList() {
@@ -91,8 +109,16 @@ public class Invoice {
 
 	@Override
 	public String toString() {
-		return "Invoice [id=" + id + ", breackdownList=" + breackdownList + ", paid=" + paid + ", date=" + date + "]";
+		return "Invoice [id=" + id + ", breackdownList=" + breackdownList + ", paid=" + paid + ", date=" + date
+				+ ", breakdownList=" + breakdownList + ", getId()=" + getId() + ", getBreakdownList()="
+				+ getBreakdownList() + ", getBreackdownList()=" + getBreackdownList() + ", isPaid()=" + isPaid()
+				+ ", getDate()=" + getDate() + "]";
 	}
+
+
+	
+
+
 	
 	
 }

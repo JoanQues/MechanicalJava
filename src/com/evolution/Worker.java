@@ -14,6 +14,21 @@ public class Worker extends Person {
 	public Worker(String dni, String name, String surnames, String email, int phone) {
 		super(dni, name, surnames, email, phone);
 	}
+	
+	public double CalculateSalary() {
+		int hour = this.hourSalary;
+		int baseSalary = hour * 8 * 5;
+		double weekSalary = 0.0;
+		
+		if(this.category == WorkerCategory.JUNIOR) {
+			weekSalary = baseSalary;
+		}else if(this.category == WorkerCategory.SENIOR) {
+			weekSalary = baseSalary * 1.20;
+		}else {
+			weekSalary = baseSalary * 1.50;
+		}
+		return weekSalary;
+	}
 
 	public int getHourSalary() {
 		return hourSalary;
